@@ -1,0 +1,27 @@
+Creare un'applicazione Maven che gestisca una collezione di giochi composta da elementi di tipo Videogioco e
+Gioco da Tavolo. Ogni elemento della collezione ha i seguenti attributi:
+- ID Gioco (codice univoco)
+- Titolo
+- Anno Pubblicazione
+- prezzo (valore positivo)
+I videogiochi hanno inoltre:
+- Piattaforma (es. PC, PS5, XBox)
+- Durata di gioco (in ore)
+- Genere (enum con lista generi a vostro piacimento)
+I giochi da tavolo invece hanno:
+- Numero di giocatori (range da 2 a 10)
+- Durata media di una partita (in minuti)
+
+
+Creare una classe Collezione che implementi i seguenti metodi:
+- Aggiunta di un elemento (non deve essere possibile inserire un elemento con lo stesso ID)
+- Ricerca per ID
+- Ricerca per prezzo, deve ritornare quindi una lista di giochi con prezzo inferiore al prezzo inserito
+- Ricerca per numero di giocatori
+- Rimozione di un elemento dato un codice ID
+- Aggiornamento di un elemento esistente dato l'ID
+- Statistiche della collezione: stampa il numero totale di videogiochi e giochi da tavolo presenti, il gioco con il prezzo più alto e la media dei prezzi di tutti gli elementi
+L'utente tramite Scanner deve poter accedere a tutte le operazioni. Per l'implementazione degli algoritmi si
+impieghino i Java Streams e le Lambda expression.
+Gestire tutte le possibili eccezioni, come l'aggiunta di un elemento gia esistente, la ricerca di un ID non valido, e
+così via
