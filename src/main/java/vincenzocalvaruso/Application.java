@@ -32,6 +32,13 @@ public class Application {
 
             collezione.stampaStatistiche();
 
+            //Provo la ricerca per id ---- aggiunto dopo per completezza progetto
+            System.out.println("Inserisci l'id di un gioco specifico cercarlo nella libreria");
+            // Se l'utente inserisce un id non presente nella lista, si lancierà un exception (esempio: inserisci 10)
+            int idRicerca = Integer.parseInt(scanner.nextLine());
+            System.out.println(collezione.ricercaPerId(idRicerca).getTitolo());
+
+
             // Provo una ricerca per prezzo
             System.out.println("\nInserisci un prezzo per trovare i giochi con lo stesso prezzo o inferiore");
             double prezzo = Double.parseDouble(scanner.nextLine());

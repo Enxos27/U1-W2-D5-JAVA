@@ -95,4 +95,13 @@ public class Collezione {
     }
 
 
+    //Metodo dimenticato e aggiunto nel post per completezza lavoro
+    public Gioco ricercaPerId(int id) throws GiocoNonTrovatoException {
+        return listaGiochi.stream()
+                .filter(g -> g.getId() == id)
+                .findFirst() // Prendo il primo risultato trovato (essendo ID univoco, sarà l'unico)
+                .orElseThrow(() -> new GiocoNonTrovatoException(id)); // Se vuoto, lancio l'errore
+    }
+
+
 }
