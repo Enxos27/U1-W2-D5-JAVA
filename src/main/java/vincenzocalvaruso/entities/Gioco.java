@@ -5,18 +5,24 @@ package vincenzocalvaruso.entities;
 //- Anno Pubblicazione
 //- prezzo (valore positivo)
 
+import vincenzocalvaruso.exception.DataNonValidaException;
 import vincenzocalvaruso.exception.PrezzoNonValidoException;
-
-import java.util.Date;
 
 public abstract class Gioco {
     private String titolo;
     private double prezzo;
-    private Date annoPubblicazione;
+    private int annoPubblicazione;
     private int id;
 
-    public Gioco(int id, String titolo, double prezzo, Date annoPubblicazione) {
-        if (prezzo <= 0) throw new PrezzoNonValidoException();
+    public Gioco(int id, String titolo, double prezzo, int annoPubblicazione) {
+        if (prezzo <= 0)
+            throw new PrezzoNonValidoException();
+        if (annoPubblicazione > 2026 || annoPubblicazione < 1900)
+            throw new DataNonValidaException();
+        //Messo qua il controllo perchè gli oggetti non vengono creati dall'utente
+        //Nel caso in cui l'utent crei gli oggetti, se provasse a cambiare il prezzo (o l'anno) tramite setter l'applicazione si romperebbe
+        //Per suvviare il problema il controllo dovrà essere inserito anche nel setter, o ancora meglio, inserire il controllo nel setter
+        // e inserire il setter dentro il costruttore (esempio: setAnnoPubblicazione(annoPubblicazione) dentro al costruttore.
         this.id = id;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
@@ -27,12 +33,14 @@ public abstract class Gioco {
         return id;
     }
 
-    public Date getAnnoPubblicazione() {
+    public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 
-    public void setAnnoPubblicazione(Date annoPubblicazione) {
-        this.annoPubblicazione = annoPubblicazione;
+    public void setAnnoPubblicazione(int annoPubblicazione) {
+        if (annoPubblicazione > 2026 || annoPubblicazione < 1900)
+            throw new DataNonValidaException();
+        else this.annoPubblicazione = annoPubblicazione;
     }
 
     public double getPrezzo() {
@@ -40,7 +48,9 @@ public abstract class Gioco {
     }
 
     public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
+        if (prezzo <= 0)
+            throw new PrezzoNonValidoException();
+        else this.prezzo = prezzo;
     }
 
     public String getTitolo() {

@@ -1,7 +1,7 @@
 package vincenzocalvaruso.exception;
 
 public class GiocoNonTrovatoException extends RuntimeException {
-    public GiocoNonTrovatoException() {
-        super("Impossibile trovare il gioco");
+    public GiocoNonTrovatoException(int id) {
+        super("Impossibile trovare il gioco con l'id: " + id);
     }
 }

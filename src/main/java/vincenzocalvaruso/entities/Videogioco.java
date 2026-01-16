@@ -1,7 +1,5 @@
 package vincenzocalvaruso.entities;
 
-import java.util.Date;
-
 //- Piattaforma (es. PC, PS5, XBox)
 //- Durata di gioco (in ore)
 //- Genere (enum con lista generi a vostro piacimento)
@@ -12,7 +10,7 @@ public class Videogioco extends Gioco {
     private Genere genere;
 
 
-    public Videogioco(int id, String titolo, double prezzo, Date data, String piattaforma, double durata, Genere genere) {
+    public Videogioco(int id, String titolo, double prezzo, int data, String piattaforma, double durata, Genere genere) {
         super(id, titolo, prezzo, data);
         this.piattaforma = piattaforma;
         this.durata = durata;
@@ -27,4 +25,5 @@ public class Videogioco extends Gioco {
         STRATEGY,
         SIMULATION
     }
+
 }
